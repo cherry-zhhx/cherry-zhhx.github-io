@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="cookie、web storage #共同点    两者都是在浏览器端缓存数据，不会对服务器造成压力。 #不同点：  cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可">
+<meta name="description" content="cookie、web storage 共同点两者都是在浏览器端缓存数据，不会对服务器造成压力。 不同点： cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cook">
 <meta name="keywords" content="缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cookie">
 <meta property="og:url" content="http://cherry-zhhx.github.io/2017/08/10/cookie/index.html">
 <meta property="og:site_name" content="cherry的个人小站">
-<meta property="og:description" content="cookie、web storage #共同点    两者都是在浏览器端缓存数据，不会对服务器造成压力。 #不同点：  cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可">
+<meta property="og:description" content="cookie、web storage 共同点两者都是在浏览器端缓存数据，不会对服务器造成压力。 不同点： cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cook">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T07:30:11.623Z">
+<meta property="og:updated_time" content="2017-08-10T07:31:03.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie">
-<meta name="twitter:description" content="cookie、web storage #共同点    两者都是在浏览器端缓存数据，不会对服务器造成压力。 #不同点：  cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可">
+<meta name="twitter:description" content="cookie、web storage 共同点两者都是在浏览器端缓存数据，不会对服务器造成压力。 不同点： cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cook">
 
 
 
@@ -363,9 +363,8 @@
 
       
         <p> cookie、web storage</p>
-<p>#共同点<br>    两者都是在浏览器端缓存数据，不会对服务器造成压力。</p>
-<p>#不同点：</p>
-<ol>
+<h1 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h1><pre><code>两者都是在浏览器端缓存数据，不会对服务器造成压力。
+</code></pre><h1 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h1><ol>
 <li>cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。</li>
 <li>存储大小限制也不同，cookie数据不能超过4k，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识。sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</li>
 <li>数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。</li>
@@ -464,8 +463,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -551,6 +559,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#共同点"><span class="nav-number">1.</span> <span class="nav-text">共同点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不同点："><span class="nav-number">2.</span> <span class="nav-text">不同点：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
