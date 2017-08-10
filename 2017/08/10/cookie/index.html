@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="1、作用域（1）var声明的变量 其作用域为该语句所在的函数内，且存在变量提升现象；（2）let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；（3）const声明的是常量，在后面出现的代码中不能再修改该常量的值，只在声明所在的块级作用域内有效。">
+<meta name="description" content="cookie、web storage #共同点    两者都是在浏览器端缓存数据，不会对服务器造成压力。 #不同点：  cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可">
 <meta name="keywords" content="缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cookie">
 <meta property="og:url" content="http://cherry-zhhx.github.io/2017/08/10/cookie/index.html">
 <meta property="og:site_name" content="cherry的个人小站">
-<meta property="og:description" content="1、作用域（1）var声明的变量 其作用域为该语句所在的函数内，且存在变量提升现象；（2）let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；（3）const声明的是常量，在后面出现的代码中不能再修改该常量的值，只在声明所在的块级作用域内有效。">
+<meta property="og:description" content="cookie、web storage #共同点    两者都是在浏览器端缓存数据，不会对服务器造成压力。 #不同点：  cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T07:01:30.511Z">
+<meta property="og:updated_time" content="2017-08-10T07:29:05.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie">
-<meta name="twitter:description" content="1、作用域（1）var声明的变量 其作用域为该语句所在的函数内，且存在变量提升现象；（2）let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；（3）const声明的是常量，在后面出现的代码中不能再修改该常量的值，只在声明所在的块级作用域内有效。">
+<meta name="twitter:description" content="cookie、web storage #共同点    两者都是在浏览器端缓存数据，不会对服务器造成压力。 #不同点：  cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可">
 
 
 
@@ -313,6 +313,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/缓存/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -340,7 +362,17 @@
       
 
       
-        <p> 1、作用域<br>（1）var声明的变量 其作用域为该语句所在的函数内，且存在变量提升现象；<br>（2）let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；<br>（3）const声明的是常量，在后面出现的代码中不能再修改该常量的值，只在声明所在的块级作用域内有效。</p>
+        <p> cookie、web storage</p>
+<p>#共同点<br>    两者都是在浏览器端缓存数据，不会对服务器造成压力。</p>
+<p>#不同点：</p>
+<ol>
+<li>cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，作为HTTP规范的一部分而存在。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。</li>
+<li>存储大小限制也不同，cookie数据不能超过4k，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识。sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</li>
+<li>数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。</li>
+<li>作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。</li>
+<li>Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者。</li>
+<li>Web Storage 的 api 接口使用更方便。</li>
+</ol>
 
       
     </div>
@@ -459,7 +491,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
