@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="学习笔记分享">
+<meta name="description" content="1、作用域（1）var声明的变量 其作用域为该语句所在的函数内，且存在变量提升现象；（2）let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；（3）const声明的是常量，在后面出现的代码中不能再修改该常量的值，只在声明所在的块级作用域内有效。12345for (var i = 0; i &amp;lt; 3; i++) &amp;#123;    setTimeout(function () &amp;#">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hello-hexo">
 <meta property="og:url" content="http://cherry-zhhx.github.io/2017/08/08/hello-hexo/index.html">
 <meta property="og:site_name" content="cherry的个人小站">
-<meta property="og:description" content="学习笔记分享">
+<meta property="og:description" content="1、作用域（1）var声明的变量 其作用域为该语句所在的函数内，且存在变量提升现象；（2）let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；（3）const声明的是常量，在后面出现的代码中不能再修改该常量的值，只在声明所在的块级作用域内有效。12345for (var i = 0; i &amp;lt; 3; i++) &amp;#123;    setTimeout(function () &amp;#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-08T01:54:01.144Z">
+<meta property="og:updated_time" content="2017-08-08T10:58:34.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hello-hexo">
-<meta name="twitter:description" content="学习笔记分享">
+<meta name="twitter:description" content="1、作用域（1）var声明的变量 其作用域为该语句所在的函数内，且存在变量提升现象；（2）let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；（3）const声明的是常量，在后面出现的代码中不能再修改该常量的值，只在声明所在的块级作用域内有效。12345for (var i = 0; i &amp;lt; 3; i++) &amp;#123;    setTimeout(function () &amp;#">
 
 
 
@@ -113,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -313,6 +313,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -340,7 +362,14 @@
       
 
       
-        
+        <h1 id="1、作用域"><a href="#1、作用域" class="headerlink" title="1、作用域"></a>1、作用域</h1><p>（1）var声明的变量 其作用域为该语句所在的函数内，且存在变量提升现象；<br>（2）let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；<br>（3）const声明的是常量，在后面出现的代码中不能再修改该常量的值，只在声明所在的块级作用域内有效。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var i = 0; i &lt; 3; i++) &#123;</div><div class="line">    setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">      console.log(i)</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>因为用var定义的变量它在全局范围内是有效的，每一次循环，新的i值都会覆盖旧值，最后输出的都是最后一轮的i值。<br>for循环三次 每次将一个setTimeout放入任务队列一次 然后执行eventloop的时候，三个setTimeout都在三秒后将console.log(i)放入任务对队列 此时for循环已经执行完毕 i的值是3 在第二次eventloop时任务队列中有三个console.log(i) 同时执行<br>若i用let声明，当前的i只在本轮循环有效，所以每一次循环的i其实都是一个新的变量，所以最后输出的是6。你可能会问，如果每一轮循环的变量i都是重新声明的，那它怎么知道上一轮循环的值，从而计算出本轮循环的值？这是因为 JavaScript 引擎内部会记住上一轮循环的值，初始化本轮的变量i时，就在上一轮循环的基础上进行计算。<br>for循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。<br>只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var tmp = 123;</div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">  tmp = <span class="string">'abc'</span>; // ReferenceError</div><div class="line">  <span class="built_in">let</span> tmp;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”（temporal dead zone，简称 TDZ）。<br>总之，暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。</p>
+<h1 id="2、变量提升"><a href="#2、变量提升" class="headerlink" title="2、变量提升"></a>2、变量提升</h1><p>// var 的情况<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(foo); // 输出undefined</div><div class="line">var foo = 2;</div></pre></td></tr></table></figure></p>
+<p>// let 的情况<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(bar); // 报错ReferenceError</div><div class="line"><span class="built_in">let</span> bar = 2;</div></pre></td></tr></table></figure></p>
+<p>var声明的变量会存在变量提升的问题，变量可以在声明之前被使用，值为undefined；<br>let声明的变量不存在变量提升，变量是用在声明之前会返回一个引用错误ReferenceError；<br>const只声明不赋值，就会报错。</p>
+<h1 id="3、变量重定义"><a href="#3、变量重定义" class="headerlink" title="3、变量重定义"></a>3、变量重定义</h1><p>（1）var可以重定义，新值覆盖旧值；<br>（2）let在同一块作用域中不能重定义，会抛出一个语法错误（SyntaxError）。但内层作用域可以定义外层作用域的同名变量。<br>（3）const<br>const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指针，const只能保证这个指针是固定的，至于它指向的数据结构是不是可变的，就完全不能控制了。因此，将一个对象声明为常量必须非常小心。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const foo = &#123;&#125;;</div><div class="line">// 为 foo 添加一个属性，可以成功</div><div class="line">foo.prop = 123;</div><div class="line">foo.prop // 123</div><div class="line">// 将 foo 指向另一个对象，就会报错</div><div class="line">foo = &#123;&#125;; // TypeError: <span class="string">"foo"</span> is <span class="built_in">read</span>-only</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -357,7 +386,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
         </div>
       
@@ -431,8 +460,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -453,6 +491,15 @@
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
           
 
           
@@ -510,6 +557,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、作用域"><span class="nav-number">1.</span> <span class="nav-text">1、作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、变量提升"><span class="nav-number">2.</span> <span class="nav-text">2、变量提升</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、变量重定义"><span class="nav-number">3.</span> <span class="nav-text">3、变量重定义</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -533,17 +596,6 @@
   <span class="author" itemprop="copyrightHolder">cherry</span>
 </div>
 
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
 
 
         
@@ -580,6 +632,8 @@
   
 
 
+  
+
 
 
 
@@ -608,6 +662,9 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
 
   
 
@@ -620,13 +677,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
